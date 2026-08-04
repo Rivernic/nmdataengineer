@@ -9,7 +9,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-JQW5ZD2PF5');
     </script>
     <title>NM Data Solutions | Intelligent B2B Lead Gen</title>
@@ -91,7 +90,7 @@
             background: linear-gradient(to bottom, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         h2 { font-size: 1.25rem; color: var(--text-muted); font-weight: 300; max-width: 650px; margin: 0 auto 40px; }
-        .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 50px; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 50px; flex-wrap: wrap; }
         .btn-primary {
             display: inline-block; background-color: var(--accent); color: white;
             padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600;
@@ -105,15 +104,75 @@
         }
         .btn-secondary:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
+        /* WHATSAPP BUTTON */
+        .btn-whatsapp {
+            display: inline-flex; align-items: center; gap: 10px;
+            background-color: #25D366; color: white;
+            padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600;
+            font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 0 25px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(37, 211, 102, 0.5); }
+        .btn-whatsapp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+        /* STATS STRIP — ANIMATED */
+        .stats-strip {
+            display: flex; justify-content: center; gap: 0; margin: 0 auto 50px;
+            max-width: 750px; background: rgba(10,10,10,0.8);
+            border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+            position: relative;
+        }
+        .stats-strip::before {
+            content: ""; position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(227,28,62,0.04) 50%, transparent 100%);
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; transform: translateX(-100%); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(100%); }
+        }
+        .stat-item {
+            flex: 1; padding: 28px 20px; text-align: center;
+            border-right: 1px solid var(--border);
+            transition: background 0.3s ease;
+            cursor: default;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(227,28,62,0.04); }
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 700;
+            color: var(--accent); display: block; line-height: 1;
+            transition: transform 0.2s ease;
+        }
+        .stat-item:hover .stat-number { transform: scale(1.08); }
+        .stat-bar {
+            width: 32px; height: 2px; background: var(--accent);
+            margin: 10px auto 8px; border-radius: 2px;
+            opacity: 0.4; transition: all 0.3s ease;
+        }
+        .stat-item:hover .stat-bar { width: 48px; opacity: 1; }
+        .stat-label {
+            font-size: 0.75rem; color: var(--text-muted); 
+            letter-spacing: 0.5px; display: block;
+            text-transform: uppercase;
+        }
+        .stat-number.counting { animation: pulse-num 0.1s ease; }
+        @keyframes pulse-num {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         /* TRUSTED BY */
         .trusted-by {
-            margin-bottom: 60px; padding: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            margin-bottom: 40px; padding: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
             background: rgba(255,255,255,0.01);
         }
         .trusted-label {
             font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); 
-            letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 15px;
+            letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 12px;
         }
+        .trusted-row { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; }
         .client-logo-link { text-decoration: none; display: inline-block; }
         .client-logo {
             font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.8rem; letter-spacing: -1px;
@@ -122,6 +181,13 @@
         }
         .client-logo:hover { opacity: 1; transform: scale(1.05); }
         .sparo-img { height: 40px; width: auto; display: block; }
+
+        /* CLIENT RESULT BADGE */
+        .client-result {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
+            color: #27c93f; background: rgba(39, 201, 63, 0.08);
+            border: 1px solid rgba(39, 201, 63, 0.2); padding: 6px 14px; border-radius: 20px;
+        }
 
         /* EMAIL HELPER */
         .contact-info {
@@ -158,8 +224,44 @@
         .tech-icon { width: 24px; height: 24px; fill: var(--text-muted); }
         .tech-card:hover .tech-icon { fill: var(--accent); }
 
+        /* HOW IT WORKS */
+        .how-section { padding: 100px 0 0; text-align: center; }
+        .section-title {
+            font-size: 2.5rem; font-weight: 700; letter-spacing: -1px;
+            margin-bottom: 12px; color: var(--text-main);
+        }
+        .section-subtitle {
+            font-size: 1rem; color: var(--text-muted); margin-bottom: 50px;
+            font-weight: 300; max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+        .how-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0; position: relative; max-width: 900px; margin: 0 auto;
+        }
+        .how-step {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 35px 30px; border: 1px solid var(--border); position: relative;
+            transition: all 0.3s ease;
+        }
+        .how-step:first-child { border-radius: 12px 0 0 12px; }
+        .how-step:last-child { border-radius: 0 12px 12px 0; }
+        .how-step:not(:first-child) { border-left: none; }
+        .how-step:hover { background: rgba(255,255,255,0.04); border-color: var(--accent); z-index: 1; }
+        .how-step:hover + .how-step { border-left: 1px solid var(--border); }
+        .how-number {
+            font-family: 'JetBrains Mono', monospace; color: var(--accent);
+            font-size: 0.8rem; margin-bottom: 16px; display: block;
+        }
+        .how-step h3 { font-size: 1.2rem; margin-bottom: 10px; color: #fff; }
+        .how-step p { color: var(--text-muted); font-size: 0.9rem; }
+        .arrow-connector {
+            position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+            font-family: 'JetBrains Mono', monospace; color: var(--accent);
+            font-size: 1.2rem; z-index: 2; background: var(--bg-color); padding: 4px;
+        }
+
         /* FEATURES CARD */
-        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .features { padding: 60px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card {
             background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             padding: 35px; border-radius: 12px; border: 1px solid var(--border);
@@ -169,6 +271,63 @@
         .card h3 { font-size: 1.3rem; margin-bottom: 10px; font-family: 'Outfit', sans-serif; color: #fff; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
         .number { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.8rem; margin-bottom: 15px; display: block; }
+
+        /* PRICING SECTION */
+        .pricing-section { padding: 100px 0; text-align: center; }
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px; max-width: 900px; margin: 50px auto 0;
+        }
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 40px 35px; border-radius: 12px; border: 1px solid var(--border);
+            transition: all 0.3s ease; text-align: left; position: relative;
+        }
+        .pricing-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.04); }
+        .pricing-card.featured {
+            border-color: var(--accent); background: linear-gradient(145deg, rgba(227,28,62,0.06) 0%, rgba(255,255,255,0.01) 100%);
+            box-shadow: 0 0 40px rgba(227, 28, 62, 0.1);
+        }
+        .pricing-tag {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent);
+            background: rgba(227,28,62,0.1); border: 1px solid rgba(227,28,62,0.2);
+            padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 20px;
+        }
+        .pricing-tag.green-tag {
+            color: #27c93f; background: rgba(39,201,63,0.08); border-color: rgba(39,201,63,0.2);
+        }
+        .pricing-name { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+        .pricing-price {
+            font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 700;
+            color: #fff; line-height: 1; margin-bottom: 6px;
+        }
+        .pricing-price span { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+        .pricing-desc { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
+        .pricing-features { list-style: none; padding: 0; margin-bottom: 30px; }
+        .pricing-features li {
+            color: var(--text-muted); font-size: 0.9rem; padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .pricing-features li::before {
+            content: "✓"; color: var(--accent); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem; flex-shrink: 0;
+        }
+        .pricing-cta {
+            display: block; text-align: center; padding: 14px; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease;
+            border: 1px solid var(--accent); color: var(--accent);
+        }
+        .pricing-cta:hover { background: var(--accent); color: white; }
+        .pricing-cta.featured-cta {
+            background: var(--accent); color: white; border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(227,28,62,0.3);
+        }
+        .pricing-cta.featured-cta:hover { box-shadow: 0 0 35px rgba(227,28,62,0.5); transform: translateY(-1px); }
+        .pricing-note {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted);
+            margin-top: 30px; text-align: center;
+        }
 
         /* FAQ SECTION */
         .faq-section { margin: 100px auto; padding: 0 20px; }
@@ -191,20 +350,16 @@
         }
         .faq-answer { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-left: 0; }
 
-        /* ABOUT SECTION & PROFILE - ARREGLADO (VUELTA A LA CALIDAD HD) */
+        /* ABOUT SECTION */
         .about-section {
             margin: 80px auto; max-width: 900px; display: flex; align-items: center; gap: 50px;
             background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
             border: 1px solid var(--border); padding: 40px; border-radius: 20px;
         }
         .profile-img { 
-            width: 180px; 
-            height: 180px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 3px solid var(--accent); 
-            box-shadow: 0 0 30px rgba(227, 28, 62, 0.2);
-            flex-shrink: 0; /* ESTO EVITA QUE SE APLASTE SIN PERDER CALIDAD */
+            width: 180px; height: 180px; border-radius: 50%; object-fit: cover; 
+            border: 3px solid var(--accent); box-shadow: 0 0 30px rgba(227, 28, 62, 0.2);
+            flex-shrink: 0;
         }
         .about-text h3 { font-size: 1.8rem; margin-bottom: 15px; }
         .about-text p { color: var(--text-muted); margin-bottom: 15px; font-size: 1rem; }
@@ -222,9 +377,18 @@
         .social-icon:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; } 
+            h1 { font-size: 2.8rem; }
             .about-section { flex-direction: column; text-align: center; }
             .data-preview { overflow-x: scroll; }
+            .how-step { border-radius: 0 !important; }
+            .how-step:not(:first-child) { border-left: 1px solid var(--border); border-top: none; }
+            .how-grid { grid-template-columns: 1fr; }
+            .how-step:first-child { border-radius: 12px 12px 0 0 !important; }
+            .how-step:last-child { border-radius: 0 0 12px 12px !important; }
+            .stats-strip { flex-direction: column; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .stat-item:last-child { border-bottom: none; }
+            .arrow-connector { display: none; }
         }
     </style>
 </head>
@@ -241,24 +405,47 @@
             <h1>Precision Data.<br>Human Verified.</h1>
             <h2>I engineer custom scripts to extract verified B2B leads for agencies. No recycled databases. Just fresh, actionable data.</h2>
             
+            <!-- STATS STRIP — ANIMATED -->
+            <div class="stats-strip" id="statsStrip">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2" data-prefix="&lt;" data-suffix="%" data-decimals="0">&lt; 2%</span>
+                    <div class="stat-bar"></div>
+                    <span class="stat-label">Bounce Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="48" data-suffix="h" data-decimals="0">48h</span>
+                    <div class="stat-bar"></div>
+                    <span class="stat-label">Avg. Delivery</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="100" data-suffix="%" data-decimals="0">100%</span>
+                    <div class="stat-bar"></div>
+                    <span class="stat-label">Fresh Data, Never Recycled</span>
+                </div>
+            </div>
+
             <div class="trusted-by">
                 <span class="trusted-label">Currently Engineering Data For:</span>
-                <a href="https://www.sparomarketing.com/" target="_blank" class="client-logo-link">
-                    <div class="client-logo">
-                        <img src="sparo-logo.png" alt="Sparo Bird Logo" class="sparo-img"> 
-                    </div>
-                </a>
+                <div class="trusted-row">
+                    <a href="https://www.sparomarketing.com/" target="_blank" class="client-logo-link">
+                        <div class="client-logo">
+                            <img src="sparo-logo.png" alt="Sparo Bird Logo" class="sparo-img"> 
+                        </div>
+                    </a>
+                    <span class="client-result">↗ 250 verified leads delivered / week</span>
+                </div>
             </div>
 
             <div class="hero-buttons">
-                <a href="mailto:Nicolas24martinez@gmail.com" class="btn-primary">Start Project</a>
+                <a href="https://wa.me/5492612513316?text=Hi%20Nico!%20I'm%20interested%20in%20your%20B2B%20lead%20gen%20service." 
+                   target="_blank" class="btn-whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Chat on WhatsApp
+                </a>
+                <a href="mailto:Nicolas24martinez@gmail.com" class="btn-primary">Email Me</a>
                 <a href="#about" class="btn-secondary">Who am I?</a>
-            </div>
-            
-            <div style="text-align: center; margin-bottom: 40px;">
-                <div class="contact-info">
-                    Email: <span>Nicolas24martinez@gmail.com</span>
-                </div>
             </div>
 
             <div class="data-preview">
@@ -339,6 +526,31 @@
             </div>
         </div>
 
+        <!-- HOW IT WORKS -->
+        <div class="how-section">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three steps from your ICP to a clean, ready-to-send list.</p>
+            <div class="how-grid">
+                <div class="how-step">
+                    <span class="how-number">01 // BRIEF</span>
+                    <h3>Define Your ICP</h3>
+                    <p>Tell me your ideal customer: industry, company size, decision-maker role, and target location. The tighter the brief, the better the output.</p>
+                    <span class="arrow-connector">→</span>
+                </div>
+                <div class="how-step">
+                    <span class="how-number">02 // EXTRACT</span>
+                    <h3>I Mine It Fresh</h3>
+                    <p>I run custom Python scripts targeting your exact parameters. No databases. Every lead is extracted and cross-referenced on-demand.</p>
+                    <span class="arrow-connector">→</span>
+                </div>
+                <div class="how-step">
+                    <span class="how-number">03 // DELIVER</span>
+                    <h3>Clean CSV in 48h</h3>
+                    <p>You receive a verified, bounce-safe .CSV file, pre-formatted for Instantly, SmartLead, or any cold email tool you use.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="features">
             <div class="card">
                 <span class="number">01 // TARGET</span>
@@ -357,6 +569,58 @@
             </div>
         </div>
 
+        <!-- PRICING -->
+        <div class="pricing-section">
+            <h2 class="section-title">Simple Pricing</h2>
+            <p class="section-subtitle">One-time orders. No subscriptions. No hidden fees. Custom volume on request.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <span class="pricing-tag">STARTER</span>
+                    <div class="pricing-name">Starter List</div>
+                    <div class="pricing-price">$50<span> / order</span></div>
+                    <div class="pricing-desc">Perfect for testing a new market or ICP segment.</div>
+                    <ul class="pricing-features">
+                        <li>Up to 250 verified leads</li>
+                        <li>Custom ICP targeting</li>
+                        <li>Email verification included</li>
+                        <li>CSV / Excel delivery</li>
+                        <li>48h delivery</li>
+                    </ul>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Starter List Order" class="pricing-cta">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <span class="pricing-tag">MOST POPULAR</span>
+                    <div class="pricing-name">Growth Pack</div>
+                    <div class="pricing-price">$100<span> / order</span></div>
+                    <div class="pricing-desc">For agencies running active cold outreach campaigns.</div>
+                    <ul class="pricing-features">
+                        <li>Up to 500 verified leads</li>
+                        <li>Custom ICP targeting</li>
+                        <li>Email verification included</li>
+                        <li>CSV / Excel delivery</li>
+                        <li>48h delivery</li>
+                        <li>1 revision round</li>
+                    </ul>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Growth Pack Order" class="pricing-cta featured-cta">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <span class="pricing-tag green-tag">CUSTOM</span>
+                    <div class="pricing-name">Enterprise</div>
+                    <div class="pricing-price">Custom</div>
+                    <div class="pricing-desc">High volume? Ongoing delivery? Let's build a pipeline.</div>
+                    <ul class="pricing-features">
+                        <li>500+ leads / delivery</li>
+                        <li>Weekly or bi-weekly batches</li>
+                        <li>Dedicated ICP configuration</li>
+                        <li>Priority turnaround</li>
+                        <li>Direct Slack / WhatsApp channel</li>
+                    </ul>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Enterprise Inquiry" class="pricing-cta">Talk to Nico</a>
+                </div>
+            </div>
+            <p class="pricing-note">// Prices are starting points. Final quote depends on ICP complexity and volume.</p>
+        </div>
+
         <div class="faq-section">
             <h2 class="faq-header">Frequently Asked Questions</h2>
             <div class="faq-grid">
@@ -371,6 +635,10 @@
                 <div class="faq-card">
                     <div class="faq-question"><span class="faq-icon">Q?</span> What format do I receive?</div>
                     <p class="faq-answer">You receive a clean .CSV or Excel file, formatted ready for your cold email software (Instantly, SmartLead, etc.).</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question"><span class="faq-icon">Q?</span> What if I need a large or recurring order?</div>
+                    <p class="faq-answer">Reach out directly. I offer custom volume pricing and can set up weekly or bi-weekly deliveries for agencies that need a steady pipeline.</p>
                 </div>
             </div>
         </div>
@@ -390,7 +658,7 @@
             <p>&copy; 2026 NM Data Solutions.</p>
             <div class="social-links">
                 <a href="https://instagram.com/nico.martinez24" target="_blank" class="social-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     <span>Follow me on Instagram</span>
                 </a>
             </div>
@@ -399,6 +667,43 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        // Count-up animation triggered when stats strip enters viewport
+        const statsEl = document.getElementById('statsStrip');
+        const statNums = statsEl.querySelectorAll('.stat-number[data-target]');
+        let animated = false;
+
+        function animateCount(el) {
+            const target = parseFloat(el.dataset.target);
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            const decimals = parseInt(el.dataset.decimals) || 0;
+            const duration = 1400;
+            const startTime = performance.now();
+
+            function step(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = eased * target;
+                el.textContent = prefix + current.toFixed(decimals) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !animated) {
+                animated = true;
+                statNums.forEach((el, i) => {
+                    setTimeout(() => animateCount(el), i * 180);
+                });
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(statsEl);
+    </script>
 
 </body>
 </html>
