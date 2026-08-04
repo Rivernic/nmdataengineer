@@ -145,7 +145,9 @@
             color: var(--accent); display: block; line-height: 1;
             transition: transform 0.2s ease;
         }
-        .stat-item:hover .stat-number { transform: scale(1.08); }
+        .stat-item:hover .stat-number {
+            transform: scale(1.08);
+        }
         .stat-bar {
             width: 32px; height: 2px; background: var(--accent);
             margin: 10px auto 8px; border-radius: 2px;
@@ -157,6 +159,7 @@
             letter-spacing: 0.5px; display: block;
             text-transform: uppercase;
         }
+        /* count-up animation class */
         .stat-number.counting { animation: pulse-num 0.1s ease; }
         @keyframes pulse-num {
             0% { transform: scale(1.05); }
@@ -182,7 +185,7 @@
         .client-logo:hover { opacity: 1; transform: scale(1.05); }
         .sparo-img { height: 40px; width: auto; display: block; }
 
-        /* CLIENT RESULT BADGE */
+        /* CLIENT RESULT BADGE — NEW */
         .client-result {
             font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
             color: #27c93f; background: rgba(39, 201, 63, 0.08);
@@ -224,7 +227,7 @@
         .tech-icon { width: 24px; height: 24px; fill: var(--text-muted); }
         .tech-card:hover .tech-icon { fill: var(--accent); }
 
-        /* HOW IT WORKS */
+        /* HOW IT WORKS — NEW */
         .how-section { padding: 100px 0 0; text-align: center; }
         .section-title {
             font-size: 2.5rem; font-weight: 700; letter-spacing: -1px;
@@ -272,7 +275,7 @@
         .card p { color: var(--text-muted); font-size: 0.95rem; }
         .number { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.8rem; margin-bottom: 15px; display: block; }
 
-        /* PRICING SECTION */
+        /* PRICING SECTION — NEW */
         .pricing-section { padding: 100px 0; text-align: center; }
         .pricing-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -390,6 +393,66 @@
             .stat-item:last-child { border-bottom: none; }
             .arrow-connector { display: none; }
         }
+
+        /* FLOATING WHATSAPP BUTTON */
+        .wa-float {
+            position: fixed; bottom: 28px; right: 28px; z-index: 999;
+            display: flex; align-items: center; gap: 10px;
+            background: #25D366; color: white;
+            padding: 14px 22px 14px 18px; border-radius: 50px;
+            text-decoration: none; font-family: 'Outfit', sans-serif;
+            font-weight: 600; font-size: 0.9rem;
+            box-shadow: 0 4px 24px rgba(37, 211, 102, 0.45);
+            transition: all 0.3s ease;
+            animation: wa-pop-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.2s both;
+        }
+        .wa-float:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 36px rgba(37, 211, 102, 0.6);
+        }
+        .wa-float svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+        .wa-float-label { white-space: nowrap; }
+        @keyframes wa-pop-in {
+            0%   { opacity: 0; transform: scale(0.5) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        /* pulse ring around the button */
+        .wa-float::after {
+            content: ""; position: absolute; inset: 0;
+            border-radius: 50px; border: 2px solid #25D366;
+            animation: wa-ring 2.5s ease-out 2s infinite;
+            pointer-events: none;
+        }
+        @keyframes wa-ring {
+            0%   { opacity: 0.7; transform: scale(1); }
+            100% { opacity: 0;   transform: scale(1.35); }
+        }
+        @media (max-width: 480px) {
+            .wa-float { padding: 14px; border-radius: 50%; }
+            .wa-float-label { display: none; }
+            .wa-float::after { border-radius: 50%; }
+        }
+
+        /* FADE-IN ON SCROLL */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* staggered children inside a fade-in parent */
+        .fade-in-children > * {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in-children.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0s; }
+        .fade-in-children.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+        .fade-in-children.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.24s; }
+        .fade-in-children.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.36s; }
     </style>
 </head>
 <body>
@@ -432,11 +495,13 @@
                             <img src="sparo-logo.png" alt="Sparo Bird Logo" class="sparo-img"> 
                         </div>
                     </a>
+                    <!-- CLIENT RESULT BADGE — NEW -->
                     <span class="client-result">↗ 250 verified leads delivered / week</span>
                 </div>
             </div>
 
             <div class="hero-buttons">
+                <!-- PRIMARY CTA: WhatsApp (instant response, no friction) -->
                 <a href="https://wa.me/5492612513316?text=Hi%20Nico!%20I'm%20interested%20in%20your%20B2B%20lead%20gen%20service." 
                    target="_blank" class="btn-whatsapp">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -504,9 +569,9 @@
             </div>
         </section>
 
-        <div class="tech-section">
+        <div class="tech-section fade-in">
             <span class="trusted-label" style="margin-bottom: 20px;">POWERED BY MODERN ENGINEERING</span>
-            <div class="tech-grid">
+            <div class="tech-grid fade-in-children">
                 <div class="tech-card">
                     <svg class="tech-icon" viewBox="0 0 24 24"><path d="M12,20.25a2.25,2.25 0 0,1 -2.25,2.25h-4.5a2.25,2.25 0 0,1 -2.25,-2.25v-4.5a2.25,2.25 0 0,1 2.25,-2.25h0.75v-2.25a3,3 0 0,1 3,-3h1.5v0.75a2.25,2.25 0 0,1 -2.25,2.25h-4.5a0.75,0.75 0 0,0 -0.75,0.75v4.5a0.75,0.75 0 0,0 0.75,0.75h4.5a0.75,0.75 0 0,0 0.75,-0.75v-0.75h2.25v2.25a3,3 0 0,1 -3,3h-1.5zM15,13.5a2.25,2.25 0 0,1 2.25,-2.25h4.5a2.25,2.25 0 0,1 2.25,2.25v4.5a2.25,2.25 0 0,1 -2.25,2.25h-0.75v2.25a3,3 0 0,1 -3,3h-1.5v-0.75a2.25,2.25 0 0,1 2.25,-2.25h4.5a0.75,0.75 0 0,0 0.75,-0.75v-4.5a0.75,0.75 0 0,0 -0.75,-0.75h-4.5a0.75,0.75 0 0,0 -0.75,0.75v0.75h-2.25v-2.25a3,3 0 0,1 3,-3h1.5z"/></svg>
                     PYTHON
@@ -526,11 +591,11 @@
             </div>
         </div>
 
-        <!-- HOW IT WORKS -->
-        <div class="how-section">
+        <!-- HOW IT WORKS — NEW SECTION -->
+        <div class="how-section fade-in">
             <h2 class="section-title">How It Works</h2>
             <p class="section-subtitle">Three steps from your ICP to a clean, ready-to-send list.</p>
-            <div class="how-grid">
+            <div class="how-grid fade-in-children">
                 <div class="how-step">
                     <span class="how-number">01 // BRIEF</span>
                     <h3>Define Your ICP</h3>
@@ -551,7 +616,7 @@
             </div>
         </div>
 
-        <div class="features">
+        <div class="features fade-in-children">
             <div class="card">
                 <span class="number">01 // TARGET</span>
                 <h3>Laser Focused</h3>
@@ -569,11 +634,11 @@
             </div>
         </div>
 
-        <!-- PRICING -->
-        <div class="pricing-section">
+        <!-- PRICING SECTION — NEW -->
+        <div class="pricing-section fade-in">
             <h2 class="section-title">Simple Pricing</h2>
             <p class="section-subtitle">One-time orders. No subscriptions. No hidden fees. Custom volume on request.</p>
-            <div class="pricing-grid">
+            <div class="pricing-grid fade-in-children">
                 <div class="pricing-card">
                     <span class="pricing-tag">STARTER</span>
                     <div class="pricing-name">Starter List</div>
@@ -621,9 +686,9 @@
             <p class="pricing-note">// Prices are starting points. Final quote depends on ICP complexity and volume.</p>
         </div>
 
-        <div class="faq-section">
+        <div class="faq-section fade-in">
             <h2 class="faq-header">Frequently Asked Questions</h2>
-            <div class="faq-grid">
+            <div class="faq-grid fade-in-children">
                 <div class="faq-card">
                     <div class="faq-question"><span class="faq-icon">Q?</span> Where do you get the data?</div>
                     <p class="faq-answer">I use custom Python scripts to verify data across multiple public sources and cross-reference with tools like Apollo API to ensure validity.</p>
@@ -643,7 +708,7 @@
             </div>
         </div>
 
-        <section id="about" class="about-section">
+        <section id="about" class="about-section fade-in">
             <img src="profile.jpg" alt="Nicolas Martinez" class="profile-img">
             <div class="about-text">
                 <h3>Behind the Code</h3>
@@ -653,6 +718,15 @@
                 <span class="signature">Nicolás Martínez</span>
             </div>
         </section>
+
+        <!-- FLOATING WHATSAPP BUTTON -->
+        <a href="https://wa.me/5492612513316?text=Hi%20Nico!%20I'm%20interested%20in%20your%20B2B%20lead%20gen%20service."
+           target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span class="wa-float-label">Let's Talk</span>
+        </a>
 
         <footer>
             <p>&copy; 2026 NM Data Solutions.</p>
@@ -667,7 +741,6 @@
             </div>
         </footer>
     </div>
-
     <script>
         // Count-up animation triggered when stats strip enters viewport
         const statsEl = document.getElementById('statsStrip');
@@ -685,6 +758,7 @@
             function step(now) {
                 const elapsed = now - startTime;
                 const progress = Math.min(elapsed / duration, 1);
+                // ease-out cubic
                 const eased = 1 - Math.pow(1 - progress, 3);
                 const current = eased * target;
                 el.textContent = prefix + current.toFixed(decimals) + suffix;
@@ -703,6 +777,22 @@
         }, { threshold: 0.5 });
 
         observer.observe(statsEl);
+    </script>
+
+    <script>
+        // Fade-in on scroll — targets .fade-in and .fade-in-children
+        const fadeEls = document.querySelectorAll('.fade-in, .fade-in-children');
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target); // fire once
+                }
+            });
+        }, { threshold: 0.12 });
+
+        fadeEls.forEach(el => fadeObserver.observe(el));
     </script>
 
 </body>
