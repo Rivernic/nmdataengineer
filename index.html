@@ -14,21 +14,72 @@
     <title>NM Data Solutions | Intelligent B2B Lead Gen</title>
     <meta name="description" content="Custom B2B Lead Generation & Data Engineering. I build Python scrapers to deliver verified, high-quality leads for agencies.">
     
+    <link rel="canonical" href="https://nmdataengineer.com/">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://nmdataengineer.com/">
     <meta property="og:title" content="NM Data Solutions | Intelligent B2B Lead Gen">
     <meta property="og:description" content="Stop buying recycled lists. Get fresh, human-verified data engineered for your specific ICP.">
-    
+    <meta property="og:image" content="https://nmdataengineer.com/profile.jpg">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="Nicolas Martinez, founder of NM Data Solutions">
+
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://nmdataengineer.com/">
     <meta property="twitter:title" content="NM Data Solutions | Intelligent B2B Lead Gen">
     <meta property="twitter:description" content="Custom Python scraping for verified B2B leads.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23050505%22 stroke=%22%23e31c3e%22 stroke-width=%224%22/><text x=%2250%22 y=%2250%22 font-family=%22'JetBrains Mono'%22 font-weight=%22bold%22 font-size=%2245%22 fill=%22%23ffffff%22 text-anchor=%22middle%22 dy=%22.3em%22>N<tspan fill=%22%23e31c3e%22>M</tspan></text></svg>">
+    <meta property="twitter:image" content="https://nmdataengineer.com/profile.jpg">
+
+    <style>
+        @font-face {
+            font-family: 'Outfit'; font-style: normal; font-weight: 300; font-display: swap;
+            src: url('fonts/outfit-300.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit'; font-style: normal; font-weight: 400; font-display: swap;
+            src: url('fonts/outfit-400.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit'; font-style: normal; font-weight: 700; font-display: swap;
+            src: url('fonts/outfit-700.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'Outfit'; font-style: normal; font-weight: 800; font-display: swap;
+            src: url('fonts/outfit-800.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap;
+            src: url('fonts/jetbrainsmono-400.woff2') format('woff2');
+        }
+        @font-face {
+            font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap;
+            src: url('fonts/jetbrainsmono-700.woff2') format('woff2');
+        }
+    </style>
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Crect%20width=%22100%22%20height=%22100%22%20rx=%2220%22%20fill=%22%23050505%22%20stroke=%22%23e31c3e%22%20stroke-width=%224%22/%3E%3Ctext%20x=%2250%22%20y=%2250%22%20font-family=%22%27JetBrains%20Mono%27%22%20font-weight=%22bold%22%20font-size=%2245%22%20fill=%22%23ffffff%22%20text-anchor=%22middle%22%20dy=%22.3em%22%3EN%3Ctspan%20fill=%22%23e31c3e%22%3EM%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "NM Data Solutions",
+      "url": "https://nmdataengineer.com/",
+      "image": "https://nmdataengineer.com/profile.jpg",
+      "description": "Custom B2B lead generation and data engineering. Python scrapers delivering verified, high-quality leads for agencies.",
+      "email": "Nicolas24martinez@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Nicolás Martínez"
+      },
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://instagram.com/nico.martinez24"
+      ],
+      "priceRange": "$50-$100"
+    }
+    </script>
 
     <style>
         :root {
@@ -43,6 +94,13 @@
 
         html { scroll-behavior: smooth; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ACCESSIBILITY — visible keyboard focus ring, matches accent color */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
 
         body {
             font-family: 'Outfit', sans-serif;
@@ -87,7 +145,8 @@
         }
         h1 {
             font-size: 4rem; line-height: 1.1; font-weight: 700; margin-bottom: 20px; letter-spacing: -1px;
-            background: linear-gradient(to bottom, #fff, #a1a1aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            color: #ffffff;
+            background: linear-gradient(to bottom, #fff, #a1a1aa); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         h2 { font-size: 1.25rem; color: var(--text-muted); font-weight: 300; max-width: 650px; margin: 0 auto 40px; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 50px; flex-wrap: wrap; }
@@ -463,6 +522,7 @@
             <a href="mailto:Nicolas24martinez@gmail.com" class="btn-nav">Email Me</a>
         </header>
 
+        <main>
         <section class="hero">
             <span class="badge">CUSTOM PYTHON SCRAPING</span>
             <h1>Precision Data.<br>Human Verified.</h1>
@@ -492,7 +552,7 @@
                 <div class="trusted-row">
                     <a href="https://www.sparomarketing.com/" target="_blank" class="client-logo-link">
                         <div class="client-logo">
-                            <img src="sparo-logo.png" alt="Sparo Bird Logo" class="sparo-img"> 
+                            <img src="sparo-logo.png" alt="Sparo Marketing logo" class="sparo-img" width="300" height="150">
                         </div>
                     </a>
                     <!-- CLIENT RESULT BADGE — NEW -->
@@ -516,7 +576,7 @@
             <div class="data-preview">
                 <div class="data-preview-header">
                     <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #666; margin-left: 10px;">output_v5.csv</span>
+                    <span style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--text-muted); margin-left: 10px;">output_v5.csv</span>
                 </div>
                 <table class="data-table">
                     <thead>
@@ -651,7 +711,7 @@
                         <li>CSV / Excel delivery</li>
                         <li>48h delivery</li>
                     </ul>
-                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Starter List Order" class="pricing-cta">Get Started</a>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Starter%20List%20Order" class="pricing-cta">Get Started</a>
                 </div>
                 <div class="pricing-card featured">
                     <span class="pricing-tag">MOST POPULAR</span>
@@ -666,7 +726,7 @@
                         <li>48h delivery</li>
                         <li>1 revision round</li>
                     </ul>
-                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Growth Pack Order" class="pricing-cta featured-cta">Get Started</a>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Growth%20Pack%20Order" class="pricing-cta featured-cta">Get Started</a>
                 </div>
                 <div class="pricing-card">
                     <span class="pricing-tag green-tag">CUSTOM</span>
@@ -680,7 +740,7 @@
                         <li>Priority turnaround</li>
                         <li>Direct Slack / WhatsApp channel</li>
                     </ul>
-                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Enterprise Inquiry" class="pricing-cta">Talk to Nico</a>
+                    <a href="mailto:Nicolas24martinez@gmail.com?subject=Enterprise%20Inquiry" class="pricing-cta">Talk to Nico</a>
                 </div>
             </div>
             <p class="pricing-note">// Prices are starting points. Final quote depends on ICP complexity and volume.</p>
@@ -709,7 +769,10 @@
         </div>
 
         <section id="about" class="about-section fade-in">
-            <img src="profile.jpg" alt="Nicolas Martinez" class="profile-img">
+            <picture>
+                <source srcset="profile.webp" type="image/webp">
+                <img src="profile.jpg" alt="Nicolás Martínez, founder of NM Data Solutions" class="profile-img" width="400" height="400" loading="lazy">
+            </picture>
             <div class="about-text">
                 <h3>Behind the Code</h3>
                 <p>Hi, I'm <strong>Nico</strong>. I'm a 22-year-old Systems Engineering student from Argentina.</p>
@@ -718,6 +781,7 @@
                 <span class="signature">Nicolás Martínez</span>
             </div>
         </section>
+        </main>
 
         <!-- FLOATING WHATSAPP BUTTON -->
         <a href="https://wa.me/5492612513316?text=Hi%20Nico!%20I'm%20interested%20in%20your%20B2B%20lead%20gen%20service."
@@ -736,7 +800,7 @@
                     <span>Follow me on Instagram</span>
                 </a>
             </div>
-            <div style="margin-top: 20px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #666;">
+            <div style="margin-top: 20px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: var(--text-muted);">
                 Contact: Nicolas24martinez@gmail.com
             </div>
         </footer>
