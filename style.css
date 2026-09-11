@@ -227,6 +227,60 @@ h2 { font-size: 1.25rem; color: var(--text-muted); font-weight: 300; max-width: 
 .tech-icon { width: 24px; height: 24px; fill: var(--text-muted); }
 .tech-card:hover .tech-icon { fill: var(--accent); }
 
+/* CASE STUDY — SPARO / ICSC — NEW */
+.case-study-section { margin-top: 80px; text-align: center; }
+.case-study-card {
+    margin: 25px auto 0; max-width: 900px; display: flex; align-items: center; gap: 50px;
+    background: linear-gradient(145deg, rgba(227,28,62,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid var(--border); padding: 45px; border-radius: 20px; text-align: left;
+}
+.case-number-block {
+    flex-shrink: 0; text-align: center; padding-right: 40px; border-right: 1px solid var(--border);
+}
+.case-number {
+    font-family: 'JetBrains Mono', monospace; font-size: 3.2rem; font-weight: 700;
+    color: var(--accent); display: block; line-height: 1;
+}
+.case-number-label {
+    font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.5px; display: block; margin-top: 12px; max-width: 160px;
+}
+.case-body p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 16px; }
+.case-body p strong { color: var(--accent); }
+.case-logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.case-logo-row img { height: 30px; width: auto; }
+.case-client-tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #27c93f;
+    background: rgba(39,201,63,0.08); border: 1px solid rgba(39,201,63,0.2);
+    padding: 4px 10px; border-radius: 20px;
+}
+.case-attribution {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted);
+}
+
+/* EVENTS NICHE CALLOUT — NEW */
+.niche-section { margin-top: 40px; }
+.niche-card {
+    max-width: 900px; margin: 0 auto; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 45px; text-align: center;
+}
+.niche-card h3 { font-size: 1.6rem; margin-bottom: 14px; color: #fff; }
+.niche-card p { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto 30px; }
+.niche-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-ghost {
+    display: inline-block; background: transparent; color: var(--text-muted);
+    padding: 15px 28px; border-radius: 50px; text-decoration: none; font-weight: 600;
+    font-size: 0.9rem; border: 1px dashed var(--border); transition: all 0.3s ease;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+@media (max-width: 768px) {
+    .case-study-card { flex-direction: column; text-align: center; padding: 35px 25px; }
+    .case-number-block { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 22px; margin-bottom: 5px; }
+    .case-number-label { max-width: none; margin-left: auto; margin-right: auto; }
+    .case-logo-row { justify-content: center; }
+}
+
 /* HOW IT WORKS — NEW */
 .how-section { padding: 100px 0 0; text-align: center; }
 .section-title {
