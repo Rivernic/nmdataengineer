@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JQW5ZD2PF5"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-JQW5ZD2PF5');
+      // Defer the gtag.js network request until after the page has loaded —
+      // tracking still fires (calls above queue in dataLayer), just off the
+      // critical rendering path.
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JQW5ZD2PF5';
+        document.head.appendChild(s);
+      });
     </script>
     <title>NM Data Solutions | Intelligent B2B Lead Gen</title>
     <meta name="description" content="Custom B2B Lead Generation & Data Engineering. I build Python scrapers to deliver verified, high-quality leads for agencies.">
@@ -277,19 +285,19 @@
 
         <div class="features fade-in-children">
             <div class="card">
-                <span class="number">01 // TARGET</span>
-                <h3>Laser Focused</h3>
-                <p>Defined by your Ideal Customer Profile (ICP). I configure granular targeting parameters to filter strictly by industry, size, and role.</p>
+                <span class="number">01 // ACCESS</span>
+                <h3>Direct Line, No Middlemen</h3>
+                <p>You brief me directly and I build directly. No account manager, no sales layer translating your requirements into someone else's queue — just the person writing the code, answering your emails.</p>
             </div>
             <div class="card">
-                <span class="number">02 // EXTRACT</span>
-                <h3>Fresh Mining</h3>
-                <p>I don't have a "database". I go out and find the data new every time to ensure it's current and active.</p>
+                <span class="number">02 // ITERATE</span>
+                <h3>Built to Adjust</h3>
+                <p>Get a free 20-record sample before you commit, and one revision round included on the Growth Pack. If the first pass misses the ICP, we tighten it and run again.</p>
             </div>
             <div class="card">
-                <span class="number">03 // VERIFY</span>
-                <h3>Engineering Integrity</h3>
-                <p>I apply the same rigor to data verification as I do to software architecture. I value long-term reputation over quick wins.</p>
+                <span class="number">03 // SCALE</span>
+                <h3>From Test to Pipeline</h3>
+                <p>Start with a $50 order to validate the ICP, then scale into a recurring weekly pipeline without switching vendors or re-explaining the brief from zero.</p>
             </div>
         </div>
 
