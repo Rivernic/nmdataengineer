@@ -9,15 +9,24 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-JQW5ZD2PF5');
-      // Defer the gtag.js network request until after the page has loaded —
-      // tracking still fires (calls above queue in dataLayer), just off the
-      // critical rendering path.
-      window.addEventListener('load', function() {
+      // Load gtag.js during real browser idle time instead of tying it to
+      // 'load' — a hard load-trigger concentrated its ~700ms of parse+exec
+      // into a single burst right when other end-of-load work was also
+      // competing for the main thread, showing up as long tasks in TBT.
+      // requestIdleCallback waits for an actual idle window; the timeout is
+      // a backstop so it still fires even on a never-idle page. Safari has
+      // no requestIdleCallback, so it falls back to a short timeout there.
+      function loadGtagScript() {
         var s = document.createElement('script');
         s.async = true;
         s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JQW5ZD2PF5';
         document.head.appendChild(s);
-      });
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGtagScript, { timeout: 3000 });
+      } else {
+        setTimeout(loadGtagScript, 2500);
+      }
     </script>
     <title>NM Data Solutions | Intelligent B2B Lead Gen</title>
     <meta name="description" content="Custom B2B Lead Generation & Data Engineering. I build Python scrapers to deliver verified, high-quality leads for agencies.">
@@ -283,21 +292,36 @@
             </div>
         </div>
 
-        <div class="features fade-in-children">
-            <div class="card">
-                <span class="number">01 // ACCESS</span>
-                <h3>Direct Line, No Middlemen</h3>
-                <p>You brief me directly and I build directly. No account manager, no sales layer translating your requirements into someone else's queue — just the person writing the code, answering your emails.</p>
-            </div>
-            <div class="card">
-                <span class="number">02 // ITERATE</span>
-                <h3>Built to Adjust</h3>
-                <p>Get a free 20-record sample before you commit, and one revision round included on the Growth Pack. If the first pass misses the ICP, we tighten it and run again.</p>
-            </div>
-            <div class="card">
-                <span class="number">03 // SCALE</span>
-                <h3>From Test to Pipeline</h3>
-                <p>Start with a $50 order to validate the ICP, then scale into a recurring weekly pipeline without switching vendors or re-explaining the brief from zero.</p>
+        <div class="approach-section">
+            <div class="approach-strip fade-in-children">
+                <div class="approach-item">
+                    <svg class="approach-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                    </svg>
+                    <span class="number">01 // ACCESS</span>
+                    <h3>Direct Line, No Middlemen</h3>
+                    <p>You brief me directly and I build directly. No account manager, no sales layer translating your requirements into someone else's queue — just the person writing the code, answering your emails.</p>
+                </div>
+                <div class="approach-item">
+                    <svg class="approach-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 1 1-3-6.7"/>
+                        <polyline points="21 3 21 9 15 9"/>
+                    </svg>
+                    <span class="number">02 // ITERATE</span>
+                    <h3>Built to Adjust</h3>
+                    <p>Get a free 20-record sample before you commit, and one revision round included on the Growth Pack. If the first pass misses the ICP, we tighten it and run again.</p>
+                </div>
+                <div class="approach-item">
+                    <svg class="approach-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                        <line x1="12" y1="20" x2="12" y2="10"/>
+                        <line x1="18" y1="20" x2="18" y2="4"/>
+                    </svg>
+                    <span class="number">03 // SCALE</span>
+                    <h3>From Test to Pipeline</h3>
+                    <p>Start with a $50 order to validate the ICP, then scale into a recurring weekly pipeline without switching vendors or re-explaining the brief from zero.</p>
+                </div>
             </div>
         </div>
 
@@ -357,20 +381,52 @@
             <h2 class="faq-header">Frequently Asked Questions</h2>
             <div class="faq-grid fade-in-children">
                 <div class="faq-card">
-                    <div class="faq-question"><span class="faq-icon">Q?</span> Where do you get the data?</div>
-                    <p class="faq-answer">I use custom Python scripts to verify data across multiple public sources and cross-reference with tools like Apollo API to ensure validity.</p>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span class="faq-icon">Q?</span>
+                        <span class="faq-question-text">Where do you get the data?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer-wrap" id="faq-answer-1">
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer">I use custom Python scripts to verify data across multiple public sources and cross-reference with tools like Apollo API to ensure validity.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-card">
-                    <div class="faq-question"><span class="faq-icon">Q?</span> How is this different from buying a list?</div>
-                    <p class="faq-answer">Pre-made lists decay by 2-3% every month. My data is extracted <strong>on-demand</strong>, meaning you get the leads as they exist today, not 6 months ago.</p>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span class="faq-icon">Q?</span>
+                        <span class="faq-question-text">How is this different from buying a list?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer-wrap" id="faq-answer-2">
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer">Pre-made lists decay by 2-3% every month. My data is extracted <strong>on-demand</strong>, meaning you get the leads as they exist today, not 6 months ago.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-card">
-                    <div class="faq-question"><span class="faq-icon">Q?</span> What format do I receive?</div>
-                    <p class="faq-answer">You receive a clean .CSV or Excel file, formatted ready for your cold email software (Instantly, SmartLead, etc.).</p>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span class="faq-icon">Q?</span>
+                        <span class="faq-question-text">What format do I receive?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer-wrap" id="faq-answer-3">
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer">You receive a clean .CSV or Excel file, formatted ready for your cold email software (Instantly, SmartLead, etc.).</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="faq-card">
-                    <div class="faq-question"><span class="faq-icon">Q?</span> What if I need a large or recurring order?</div>
-                    <p class="faq-answer">Reach out directly. I offer custom volume pricing and can set up weekly or bi-weekly deliveries for agencies that need a steady pipeline.</p>
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span class="faq-icon">Q?</span>
+                        <span class="faq-question-text">What if I need a large or recurring order?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer-wrap" id="faq-answer-4">
+                        <div class="faq-answer-inner">
+                            <p class="faq-answer">Reach out directly. I offer custom volume pricing and can set up weekly or bi-weekly deliveries for agencies that need a steady pipeline.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -464,6 +520,17 @@
         }, { threshold: 0.12 });
 
         fadeEls.forEach(el => fadeObserver.observe(el));
+    </script>
+
+    <script>
+        // FAQ accordion — starts collapsed, expands on click
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const card = btn.closest('.faq-card');
+                const isOpen = card.classList.toggle('open');
+                btn.setAttribute('aria-expanded', isOpen);
+            });
+        });
     </script>
 
 </body>
